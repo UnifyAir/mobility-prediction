@@ -1,0 +1,14 @@
+scikit-learn
+fastapi
+uvicorn
+openai
+langchain
+pydantic
+aiohttp
+langchain-community
+langchain-core
+langchain-openai
+aiosqlite
+greenlet
+pandas
+python-dotenv
