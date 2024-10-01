@@ -110,8 +110,14 @@ def parse_prompt_output_json(input_str):
     # Remove the closing delimiter (```) and any preceding whitespace.
     clean_json = re.sub(r'\s*```$', '', clean_json)
     
-    # Parse the cleaned JSON string.
-    return json.loads(clean_json)
+    # Parse the cleaned JSON string
+    result = json.loads(clean_json)
+    
+    # Convert optimal_handover_tower to string if present
+    if 'optimal_handover_tower' in result:
+        result['optimal_handover_tower'] = str(result['optimal_handover_tower'])
+    
+    return result
 
 class NetworkAgentManager:
     def __init__(self, api_key: str):
