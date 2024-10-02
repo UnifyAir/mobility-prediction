@@ -7,8 +7,8 @@ pydantic
 aiohttp
 langchain-community
 langchain-core
-langchain-openai
 aiosqlite
 greenlet
 pandas
 python-dotenv
+langchain-google-genai

@@ -32,7 +32,7 @@ Our approach currently involves:
 
 ## Requirements
 
-- **Python 3.8+**
+- **Python 3.10+**
 - Libraries:
   - `numpy`
 
@@ -59,19 +59,35 @@ Our approach currently involves:
    ```
 
 ## Usage
-
-1. Prepare your data:
-   - Ensure you have a CSV or similar file with columns like user_id, timestamp, latitude, longitude.
-   - Place your data in the data/ directory (or update the config to point to your data location).
-2. Run the periodic pattern detection script:
+1. Set the gemini api key in .env:
    ```bash
-   python detect_periodic_patterns.py --input data/user_trajectory.csv --output results/predicted_locations.csv
+   GEMINI_API_KEY=
    ```
-3. Review results:
-   - Check the results/ folder for the output files.
+
+2. Run the api server
+   ```bash
+   bash run.sh
+   ```
+
+3. Test the results with following curl request: 
+   ```bash
+   curl --location 'http://localhost:8000/predict' \
+   --header 'Content-Type: application/json' \
+   --data '{
+      "user_id": "1",
+      "cell_tower_loads": {
+         "187650": 70,
+         "187648": 10,
+         "306258": 10,
+         "334594": 15,
+         "334593": 20
+      },
+      "current_cell_tower": "187648",
+      "timestamp": 0
+   }'
+   ```
 
 ## TODOs
-
 - [ ] Data Preprocessing pipeline
 - [ ] Visualize plot predictions
 - [ ] Refine Periodicity Detection
@@ -81,18 +97,25 @@ Our approach currently involves:
 ## Project Structure
 
 ```
-periodic-mobility-prediction/
+mobility-prediction/
 ├── data/
 │   └── user_trajectory.csv          # Example input data
-├── results/
-│   └── predicted_locations.csv      # Example output
-├── scripts/
-│   └── detect_periodic_patterns.py  # Main script for periodic detection
 ├── util-scripts/
 │   └── find-cells.py                # Getting cell location inside the box.
-│   └── geojson-smooth.py            # Smoothening a geojson path
+│   └── geojson_smooth.py            # Smoothening a geojson path
+│   └── geojson_to_csv.py            # Smoothening a geojson path
+│   └── common_utils.py              # Common helper libraries for util script 
 │   └── select_top_cells.py          # Select cells near a geojson path
+├── api/
+│   ├── __init__.py
+│   ├── app.py                       # FastAPI backend agent
+│   ├── database.py                  # Database initialization and operations
+│   ├── models.py                    # Pydantic models for request validation
+│   ├── services.py                  # Core logic for prediction and LLM integration
+│   └── utils.py                     # Utility functions (e.g., CSV loading)
 ├── requirements.txt
+├── run.sh
+├── .env
 ├── README.md
 └── LICENSE
 ```
