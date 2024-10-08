@@ -1,3 +1,20 @@
+"""
+This script reads a GeoJSON file and "smooths" (densifies) the coordinates of any LineString geometries
+by inserting intermediate points along each segment. For each pair of consecutive coordinates, if the 
+distance between them (calculated using the Haversine formula via sklearn) is greater than a specified 
+interval (default is 10 meters), the script interpolates additional points every `interval` meters.
+
+The modified GeoJSON data is then either printed to the standard output or saved to a specified output file.
+
+Sample usage:
+    python smooth_geojson.py input.geojson -o output.geojson -i 10
+
+Arguments:
+    input_geojson : Path to the input GeoJSON file.
+    -o, --output : Path to the output GeoJSON file (default: stdout).
+    -i, --interval : Interval in meters for densification (default: 10).
+"""
+
 import argparse
 import json
 import numpy as np

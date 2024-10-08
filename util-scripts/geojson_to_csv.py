@@ -1,3 +1,21 @@
+"""
+This script converts a GeoJSON file containing LineString geometries into CSV format.
+For each LineString feature in the GeoJSON, it extracts the coordinates, computes the
+distance between consecutive points using the haversine formula (via the haversine_sklearn function),
+and writes out a CSV file with the following columns:
+    - lat: Latitude of the point.
+    - long: Longitude of the point.
+    - dist: Distance in meters from the previous point (the first point in each LineString has a distance of 0).
+
+Usage:
+    python geojson_to_csv.py input_geojson_file.geojson -o output_csv_file.csv
+
+Example:
+    python geojson_to_csv.py sample.geojson -o output.csv
+
+If the output file is set to '-' (the default), the CSV data is written to stdout.
+"""
+
 import argparse
 import csv
 import sys
