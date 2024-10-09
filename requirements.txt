@@ -1,14 +1,12 @@
 scikit-learn
 fastapi
 uvicorn
-openai
 langchain
 pydantic
 aiohttp
 langchain-community
 langchain-core
 aiosqlite
-greenlet
 pandas
 python-dotenv
 langchain-google-genai

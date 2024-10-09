@@ -4,14 +4,16 @@ This project implements a user mobility prediction model inspired by the [AgentM
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Key Features](#key-features)
-3. [Requirements](#requirements)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Project Structure](#project-structure)
-7. [TODOs](#todos)
-8. [License](#license)
+- [Mobility Prediction for NR Handovers](#mobility-prediction-for-nr-handovers)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Key Features](#key-features)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [TODOs](#todos)
+  - [Project Structure](#project-structure)
+  - [License](#license)
 
 ## Overview
 
@@ -88,11 +90,11 @@ Our approach currently involves:
    ```
 
 ## TODOs
+- [X] Extending to cell prediction.
 - [ ] Data Preprocessing pipeline
 - [ ] Visualize plot predictions
 - [ ] Refine Periodicity Detection
 - [ ] Explore reinforcement learning for dynamic route selection
-- [ ] Extending to cell prediction.
 
 ## Project Structure
 
