@@ -36,7 +36,18 @@ Our approach currently involves:
 
 - **Python 3.10+**
 - Libraries:
-  - `numpy`
+  - `fastapi`
+  - `uvicorn`
+  - `langchain`
+  - `pydantic`
+  - `aiohttp`
+  - `langchain-community`
+  - `langchain-core`
+  - `aiosqlite`
+  - `pandas`
+  - `python-dotenv`
+  - `langchain-google-genai`
+  - `scikit-learn`
 
 ## Installation
 
