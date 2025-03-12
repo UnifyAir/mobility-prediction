@@ -95,6 +95,32 @@ class UserNetworkAgent:
         )
         return parse_prompt_output_json(recommendation_result)
 
+
+    # async def predict_worst_cell_towers(
+    #     self,
+    #     user_id: str,
+    #     cell_tower_loads: Dict,
+    #     timestamp: int,
+    #     current_cell_tower: int,
+    #     db: AsyncSession,
+    # ) -> str:
+    #     # Fetch trajectory data directly here
+    #     trajectory_data = await get_user_trajectory_data(user_id, timestamp, db)
+        
+    #     # We'll use a different chain specifically for identifying problematic towers
+    #     worst_tower_result = await self.problematic_tower_chain.apredict(
+    #         trajectory_data=trajectory_data,
+    #         timestamp=timestamp, 
+    #         cell_tower_loads=cell_tower_loads,
+    #         current_cell_tower=current_cell_tower,
+    #         # Additional parameters that might help identify worst towers
+    #         historical_failures=await get_tower_failure_history(db),
+    #         signal_quality_metrics=await get_signal_quality_data(db)
+    #     )
+        
+    #     # Parse the output to get the worst towers in a structured format
+    #     return parse_prompt_output_json(worst_tower_result)
+
 def parse_prompt_output_json(input_str):
     """
     Parses a JSON string that may be wrapped in Markdown code block delimiters.
